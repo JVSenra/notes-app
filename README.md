@@ -1,4 +1,4 @@
-# Note App
+# Notes App
 
 ## Resumo
 Este projeto consiste em uma aplicação que permite ao usuário criar e salvar anotações. O objetivo é fornecer uma maneira fácil e conveniente para que o usuário possa registrar informações importantes e tê-las disponíveis para consulta posterior.
