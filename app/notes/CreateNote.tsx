@@ -20,10 +20,8 @@ export default function CreateNote() {
         content,
       }),
     });
-
     setContent("");
     setTitle("");
-
     router.refresh();
   };
 
