@@ -1,4 +1,5 @@
 import Link from "next/link";
+import styles from "./Notes.module.css";
 
 //Busca e retorna os notes no pocketbase
 async function getNotes() {
@@ -15,7 +16,7 @@ export default async function NotesPage() {
   return (
     <div>
       <h1>Notes</h1>
-      <div>
+      <div className={styles.grid}>
         {notes?.map((note) => {
           return <Note key={note.id} note={note} />;
         })}
@@ -23,12 +24,12 @@ export default async function NotesPage() {
     </div>
   );
 }
-
+//Adiciona os notes na page
 function Note({ note }: any) {
   const { id, title, content, created } = note || {};
   return (
     <Link href={`/notes/${id}`}>
-      <div>
+      <div className={styles.note}>
         <h2>{title}</h2>
         <h5>{content}</h5>
         <p>{created}</p>
