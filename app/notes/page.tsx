@@ -1,5 +1,6 @@
 import Link from "next/link";
 import styles from "./Notes.module.css";
+import CreateNote from "./CreateNote";
 
 //Busca e retorna os notes no pocketbase
 async function getNotes() {
@@ -21,9 +22,11 @@ export default async function NotesPage() {
           return <Note key={note.id} note={note} />;
         })}
       </div>
+      <CreateNote />
     </div>
   );
 }
+
 //Adiciona os notes na page
 function Note({ note }: any) {
   const { id, title, content, created } = note || {};

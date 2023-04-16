@@ -1,13 +1,34 @@
 "use client"; //Ativa a renderização do componentes somente no cliente
 import { create } from "domain";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function CreateNote() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  
+  const router = useRouter();
+
+  //Envia as informação do note(anotação) para o pocketbase
+  const create = async () => {
+    await fetch("http://127.0.0.1:8090/api/collections/notes/records", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        title,
+        content,
+      }),
+    });
+
+    setContent("");
+    setTitle("");
+
+    router.refresh();
+  };
 
   return (
+    //Formulario para criar um note(anotação)
     <form onSubmit={create}>
       <h3>Create a new Note</h3>
       <input
